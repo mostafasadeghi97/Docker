@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  redis-server:
+    image: redis
+  web:
+    build: .
+    volumes:
+      - .:/usr/pythonapp
+      - ./container:/usr/pythonapp/container:ro
+    ports:
+      - "8077:8200"
+    #depends_on:
+     # - redis-server
